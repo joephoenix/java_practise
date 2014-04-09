@@ -1,6 +1,6 @@
-package phoenix.algorithm;
+package phoenix.practise.third;
 
-public class QuickSort {
+public class C03QuickSort {
 
 	private static void QuickSortMethod(int[] a, int low, int high) {
 		int i, j, temp;
