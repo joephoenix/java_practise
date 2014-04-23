@@ -3,7 +3,7 @@ package phoenix.practise.forth;
 import java.io.FileInputStream;
 import java.io.IOException;
 
-public class D02TestFileInputStream {
+public class D02FileInputStream {
 
 	public static void main(String[] args) {
 		long num = 0;
