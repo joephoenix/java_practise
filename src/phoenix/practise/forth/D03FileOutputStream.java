@@ -13,17 +13,19 @@ public class D03FileOutputStream {
 		FileInputStream finput = null;
 		FileOutputStream foutput = null;
 		try {
-			finput = new FileInputStream(
-					"C:/ProjectFolder/Eclipse_projects/java_practise"
-							+ "/src/phoenix/practise/forth/D03TestFileOutputStream.java");
+			String path = D03FileOutputStream.class.getResource("").getPath();
+			path = path.replace("/bin/", "/src/");
+			finput = new FileInputStream(path + "D03FileOutputStream.java");
 		} catch (FileNotFoundException e) {
 			System.out.println("File TFileOutputStream.java is not found!");
 			System.exit(-1);
 		}
 		try {
-			foutput = new FileOutputStream("C:/TDDOWNLOAD/CopyFile.java");
+			String path = D03FileOutputStream.class.getResource("").getPath();
+			path = path.replace("/bin/", "/src/");
+			foutput = new FileOutputStream(path + "D03Clone.txt");
 		} catch (FileNotFoundException e) {
-			System.out.println("File TFileOutputStreamcopy is not found!");
+			System.out.println("File D03Clone is not found!");
 			System.exit(-1);
 		}
 		try {

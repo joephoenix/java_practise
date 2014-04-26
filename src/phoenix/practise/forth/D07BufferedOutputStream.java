@@ -17,10 +17,10 @@ public class D07BufferedOutputStream {
 		long num = 0;
 		int b = 0;
 		try {
-			finput = new FileInputStream(
-					"/Users/joephoenix/Projects/javaProject/"
-							+ "java_practise/src/phoenix/practise/"
-							+ "forth/D07BufferedOutputStream.java");
+			String path = D07BufferedOutputStream.class.getResource("")
+					.getPath();
+			path = path.replace("/bin/", "/src/");
+			finput = new FileInputStream(path + "D07BufferedOutputStream.java");
 			binput = new BufferedInputStream(finput);
 		} catch (FileNotFoundException e) {
 			System.out.println("文件输入错误！");
@@ -28,8 +28,10 @@ public class D07BufferedOutputStream {
 		}
 
 		try {
-			foutput = new FileOutputStream("/Users/joephoenix/Downloads/"
-					+ "D07BufferedOutputStreamClone.txt");
+			String path = D07BufferedOutputStream.class.getResource("")
+					.getPath();
+			path = path.replace("/bin/", "/src/");
+			foutput = new FileOutputStream(path + "D07Clone.txt");
 			boutput = new BufferedOutputStream(foutput);
 		} catch (FileNotFoundException e) {
 			System.out.println("文件输出错误！");
@@ -44,14 +46,11 @@ public class D07BufferedOutputStream {
 			}
 			System.out.println();
 			System.out.println("The number char of this file is " + num);
+			boutput.flush();
+			foutput.flush();
 			finput.close();
 			binput.close();
-			foutput.flush();
 			foutput.close();
-			// 该句一定会抛出IOException异常，所以如果运行这一句，System.out.println("文件操作失败！");
-			// 就一定会运行
-			// output.flush();
-			// boutput.close();
 		} catch (IOException e) {
 			System.out.println("文件操作失败！");
 			System.exit(-1);

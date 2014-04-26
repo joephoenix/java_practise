@@ -13,18 +13,20 @@ public class D05FileWriter {
 		FileReader freader = null;
 		FileWriter fwriter = null;
 		try {
-			freader = new FileReader("C:/ProjectFolder/"
-					+ "Eclipse_projects/java_practise"
-					+ "/src/phoenix/practise/forth/D05FileWriter.java");
+			String path = D05FileWriter.class.getResource("").getPath();
+			path = path.replace("/bin/", "/src/");
+			freader = new FileReader(path + "D05FileWriter.java");
 		} catch (FileNotFoundException e) {
 			System.out.println("找不到文件 D05FileWriter.java！");
 			System.exit(-1);
 		}
 
 		try {
-			fwriter = new FileWriter("C:/TDDOWNLOAD/CopyFileWrite.java");
+			String path = D05FileWriter.class.getResource("").getPath();
+			path = path.replace("/bin/", "/src/");
+			fwriter = new FileWriter(path + "D05Clone.txt");
 		} catch (FileNotFoundException e) {
-			System.out.println("找不到文件 CopyFileWrite.java！");
+			System.out.println("找不到文件 D05Clone.txt！");
 			System.exit(-1);
 		} catch (IOException e) {
 			System.out.println("文件操作失败！");

@@ -10,9 +10,9 @@ public class D02FileInputStream {
 		int b = 0;
 		FileInputStream finput = null;
 		try {
-			finput = new FileInputStream(
-					"C:/ProjectFolder/Eclipse_projects/java_practise"
-							+ "/src/phoenix/practise/forth/D02TestFileInputStream.java");
+			String path = D02FileInputStream.class.getResource("").getPath();
+			path = path.replace("/bin/", "/src/");
+			finput = new FileInputStream(path + "D02FileInputStream.java");
 		} catch (IOException ioex) {
 			System.out.println("File is not found!");
 			System.exit(-1);

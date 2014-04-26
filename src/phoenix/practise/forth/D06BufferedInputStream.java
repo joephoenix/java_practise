@@ -12,10 +12,10 @@ public class D06BufferedInputStream {
 		BufferedInputStream binput = null;
 		int c = 0;
 		try {
-			finput = new FileInputStream(
-					"/Users/joephoenix/Projects/javaProject/"
-							+ "java_practise/src/phoenix/practise/"
-							+ "forth/D06BufferedInputStream.java");
+			String path = D06BufferedInputStream.class.getResource("")
+					.getPath();
+			path = path.replace("/bin/", "/src/");
+			finput = new FileInputStream(path + "D06BufferedInputStream.java");
 			binput = new BufferedInputStream(finput, 1024);// 可以指定缓冲区的大小，也可以不指定
 		} catch (FileNotFoundException e) {
 			System.out.println("File is not found!");
