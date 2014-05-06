@@ -3,5 +3,6 @@
 /.classpath
 /.settings
 /.gitignore
-/webapp/WEB-INF/classes
+/.DS_Store
+
 
