@@ -62,7 +62,7 @@ public class ActionDemo extends JFrame {
 		jbSend.setText("发送"); // 设置按钮文本
 
 		// 窗口设置
-		setSize(400, 200); // 设置窗口尺寸
+		setSize(700, 500); // 设置窗口尺寸
 		setVisible(true); // 设置窗口可视
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); // 关闭窗口时退出程序
 	}

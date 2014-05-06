@@ -39,7 +39,8 @@ public class DefineButton extends JButton {
 	protected void paintBorder(Graphics g) {
 		g.setColor(getForeground());
 		// 在边界上绘制一个椭圆
-		g.drawOval(0, 0, getSize().width - 1, getSize().height - 1);
+		g.drawOval(0, 0, getSize().width - 2, getSize().height - 2);
+		super.paintBorder(g);
 	}
 
 }

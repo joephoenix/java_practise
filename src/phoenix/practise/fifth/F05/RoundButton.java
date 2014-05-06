@@ -49,7 +49,7 @@ public class RoundButton extends JFrame {
 		});
 
 		// 窗口属性设置
-		setSize(400, 300);
+		setSize(700, 500);
 		setVisible(true);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
