@@ -1,0 +1,10 @@
+该程序介绍了怎样在窗口中画出自己想要的实线和虚线。
+
+
+float[] dash = { 5, 5 }; // 短划线图案
+BasicStroke bs = new BasicStroke(1, BasicStroke.CAP_BUTT,
+BasicStroke.JOIN_MITER, 10.0f, dash, 0.0f); // 实例化新画刷
+g2.setStroke(bs); // 设置新的画刷
+g2.drawLine(40, 160, 100, 120); // 用新的画刷绘制虚线
+g2.drawLine(100, 120, 160, 120);
+g2.drawLine(160, 120, 280, 40);这段代码作用是设置新画刷，用新的画刷绘制虚线。
