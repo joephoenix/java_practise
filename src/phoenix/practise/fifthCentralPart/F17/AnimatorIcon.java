@@ -8,8 +8,6 @@ import java.util.Random;
 
 import javax.swing.*;
 
-import phoenix.practise.fifthCentralPart.F15.MyDragPicture;
-
 public class AnimatorIcon extends JPanel implements ActionListener {
 
 	// 动态图标实现需要的参数
@@ -25,7 +23,7 @@ public class AnimatorIcon extends JPanel implements ActionListener {
 		setBackground(Color.white);
 
 		// 设置文件的读取路径
-		String path = MyDragPicture.class.getResource("").getPath();
+		String path = AnimatorIcon.class.getResource("").getPath();
 		path = path.substring(0, path.indexOf("/bin/"));
 		// 找到项目的整体图片文件夹
 		path = path + "/images/";

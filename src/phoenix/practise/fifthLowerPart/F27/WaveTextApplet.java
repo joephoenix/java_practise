@@ -27,7 +27,7 @@ public class WaveTextApplet extends Applet implements Runnable {
 		message = getParameter("Text");
 
 		if (message == null) {
-			message = "波浪文字";
+			message = "波浪文字显示效果";
 		}
 
 		setBackground(Color.black);
@@ -48,6 +48,7 @@ public class WaveTextApplet extends Applet implements Runnable {
 			h = ((float) i) / ((float) message.length());
 			colors[i] = new Color(Color.HSBtoRGB(h, 1.0f, 1.0f));
 		}
+		this.setSize(800, 200);
 	}
 
 	public void start() {
