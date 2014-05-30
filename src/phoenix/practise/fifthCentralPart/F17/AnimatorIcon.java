@@ -23,12 +23,7 @@ public class AnimatorIcon extends JPanel implements ActionListener {
 		setBackground(Color.white);
 
 		// 设置文件的读取路径
-		String path = AnimatorIcon.class.getResource("").getPath();
-		path = path.substring(0, path.indexOf("/bin/"));
-		// 找到项目的整体图片文件夹
-		path = path + "/images/";
-		// 加入本工程的分类文件夹
-		path = path + "F17/";
+		String path = getClass().getResource("/images/F17/").getPath();
 
 		// 初始化动态图片的数组
 		images = new ImageIcon[4];
@@ -50,7 +45,7 @@ public class AnimatorIcon extends JPanel implements ActionListener {
 		// 开始绘制
 		images[currentImage].paintIcon(this, g, 70, 0);
 		Random rd = new Random();
-		currentImage = (currentImage + 1) % 2;
+		currentImage = (currentImage + 1) % 4;
 		// currentImage = rd.nextInt(images.length);
 		// System.out.println(currentImage);
 	}

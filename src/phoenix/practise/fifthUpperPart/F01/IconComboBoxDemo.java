@@ -22,13 +22,8 @@ public class IconComboBoxDemo extends JFrame {
 	@SuppressWarnings("unchecked")
 	public IconComboBoxDemo() {
 		// 读取运行的根路径
-		String path = IconComboBoxDemo.class.getResource("").getPath();
-		path = path.substring(0, path.indexOf("/bin/"));
-		// 找到项目的整体图片文件夹
-		path = path + "/images/";
-		// 加入本工程的分类文件夹
-		path = path + "F01/";
-		// System.out.println(path);
+		String path = getClass().getResource("/images/F01/").getPath();
+
 		// 定义Object二维数组,用于初始化下拉框,参数依次为图标,显示文本,提示文本
 		Object[][] obj = {
 				{ new ImageIcon(path + "1.gif"), "旅游", "提供旅游的最新信息" },

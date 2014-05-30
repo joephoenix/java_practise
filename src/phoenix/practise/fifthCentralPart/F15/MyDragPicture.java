@@ -15,14 +15,9 @@ public class MyDragPicture extends JFrame {
 
 		/** 声明并实例化需要的控件 **/
 		// 读取运行的根路径
-		String path = MyDragPicture.class.getResource("").getPath();
-		path = path.substring(0, path.indexOf("/bin/"));
-		// 找到项目的整体图片文件夹
-		path = path + "/images/";
-		// 加入本工程的分类文件夹
-		path = path + "F15/";
+		String path = getClass().getResource("/images/F15/1.jpg").getPath();
 		// 声明实例化图片
-		Icon image = new ImageIcon(path + "1.jpg");
+		Icon image = new ImageIcon(path);
 		jlpic = new JLabel(image);
 		getContentPane().add(jlpic); // 加载到容器上
 		DragPicListener listener = new DragPicListener(); // 鼠标事件处理
