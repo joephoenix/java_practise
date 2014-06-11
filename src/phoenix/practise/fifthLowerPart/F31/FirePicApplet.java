@@ -19,11 +19,11 @@ public class FirePicApplet extends Applet implements Runnable {
 		width = dim.width;
 		height = dim.height;
 
-		//图片存放的url
+		// 图片存放的url
 		URL url = getClass().getResource("/images/F31/");
 		// 得到图片
 		backImage = getImage(url, "back.jpg");
-		foreImage = getImage(url, "image1.gif");
+		foreImage = getImage(url, "fore.jpg");
 
 		// 实例化MediaTracker对象
 		imageTracker = new MediaTracker(this);
@@ -57,17 +57,21 @@ public class FirePicApplet extends Applet implements Runnable {
 		int x = 0, y = 0;
 		int tileWidth = backImage.getWidth(this);
 		int tileHeight = backImage.getHeight(this);
-
-		// 实现火焰效果
+		
 		while (thread != null) {
+			//x位置是火焰图片的宽度减去applet的宽度
+			//y位置是火焰图片的高度减去applent的高度
 			x = fireImage.getWidth(this) - width;
 			y = fireImage.getHeight(this) - height;
+			//当x>0和y>0的话，x和y各减一，然后循环
 			for (; (x > 0) && (y > 0); x--, y--) {
+				//如果x或者y等于0，则从新开始
 				if ((x == 0) || (y == 0)) {
 					x = fireImage.getWidth(this) - width;
 					y = fireImage.getHeight(this) - height;
 				}
 
+				// 实现火焰效果
 				for (int j = 0; j < fireImage.getHeight(this); j = j
 						+ tileHeight) {
 					for (int i = 0; i < fireImage.getWidth(this); i = i
@@ -80,7 +84,8 @@ public class FirePicApplet extends Applet implements Runnable {
 				fireGraphics.drawImage(foreImage, x, y, width, height, this);
 				// 绘制火焰效果Image
 				graphics.drawImage(fireImage, -x, -y, this);
-				repaint(); // 重绘屏幕
+				// 重绘屏幕
+				repaint(); 
 			}
 		}
 	}
