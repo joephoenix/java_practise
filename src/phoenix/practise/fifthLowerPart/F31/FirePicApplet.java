@@ -55,17 +55,21 @@ public class FirePicApplet extends Applet implements Runnable {
 	// 主线程运行
 	public void run() {
 		int x = 0, y = 0;
+
 		int tileWidth = backImage.getWidth(this);
 		int tileHeight = backImage.getHeight(this);
-		
+
+		int foreWidth = foreImage.getWidth(this);
+		int foreHeight = foreImage.getHeight(this);
+
 		while (thread != null) {
-			//x位置是火焰图片的宽度减去applet的宽度
-			//y位置是火焰图片的高度减去applent的高度
+			// x位置是火焰图片的宽度减去applet的宽度
+			// y位置是火焰图片的高度减去applent的高度
 			x = fireImage.getWidth(this) - width;
 			y = fireImage.getHeight(this) - height;
-			//当x>0和y>0的话，x和y各减一，然后循环
+			// 当x>0和y>0的话，x和y各减一，然后循环
 			for (; (x > 0) && (y > 0); x--, y--) {
-				//如果x或者y等于0，则从新开始
+				// 如果x或者y等于0，则从新开始
 				if ((x == 0) || (y == 0)) {
 					x = fireImage.getWidth(this) - width;
 					y = fireImage.getHeight(this) - height;
@@ -81,11 +85,12 @@ public class FirePicApplet extends Applet implements Runnable {
 				}
 
 				// 绘制前景图片
-				fireGraphics.drawImage(foreImage, x, y, width, height, this);
+				fireGraphics.drawImage(foreImage, x, y, foreWidth, foreHeight,
+						this);
 				// 绘制火焰效果Image
 				graphics.drawImage(fireImage, -x, -y, this);
 				// 重绘屏幕
-				repaint(); 
+				repaint();
 			}
 		}
 	}
