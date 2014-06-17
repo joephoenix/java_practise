@@ -4,7 +4,6 @@ import java.applet.Applet;
 import java.awt.*;
 import java.net.URL;
 
-@SuppressWarnings("serial")
 public class ReverseApplet extends Applet implements Runnable {
 
 	// 图像数组及当前显示图像
@@ -47,7 +46,7 @@ public class ReverseApplet extends Applet implements Runnable {
 		// 得到延迟参数
 		String param = getParameter("delay");
 		if (param == null) {
-			delay = 1000;
+			delay = 3000;
 		} else {
 			delay = Integer.parseInt(param);
 		}
@@ -85,7 +84,7 @@ public class ReverseApplet extends Applet implements Runnable {
 			try {
 				// 实现图片的翻折效果
 				for (int i = 0; i <= (imageHeight / 2); i++) {
-					Thread.sleep(30);
+					thread.sleep(30);
 					graphics.setColor(Color.white);
 					graphics.fillRect(0, 0, imageWidth, imageHeight);
 
@@ -99,19 +98,16 @@ public class ReverseApplet extends Applet implements Runnable {
 				currentImage = ((currentImage + 1) % totalImage);
 
 				// 实现图片的反向翻折效果
-				for (int i = 0; i <= (imageWidth / 2); i++) {
-					Thread.sleep(30);
+				for (int i = 0; i <= (imageHeight / 2); i++) {
+					thread.sleep(30);
 					graphics.setColor(Color.white);
 					graphics.fillRect(0, 0, imageWidth, imageHeight);
-
-					// 以不同宽度绘制图片
-					graphics.drawImage(images[currentImage], (imageWidth / 2)
-							- i, 0, 2 * i, imageHeight, this);
+					graphics.drawImage(images[currentImage], 0,
+							(imageHeight / 2) - i, imageWidth, 2 * i, this);
 					repaint();
 				}
-				Thread.sleep(delay);
+				thread.sleep(delay);
 			} catch (InterruptedException e) {
-				e.printStackTrace();
 			}
 		}
 	}
