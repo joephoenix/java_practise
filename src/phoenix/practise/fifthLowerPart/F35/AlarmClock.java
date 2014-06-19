@@ -133,7 +133,7 @@ public class AlarmClock extends Applet implements Runnable {
 					if (minute == alarmMinute) {
 						// 取得声音文件
 						URL url = getClass().getResource("/medias/F35/");
-						AudioClip sound = getAudioClip(url, "alarm.wav");
+						AudioClip sound = getAudioClip(url, "alarm.wma");
 						sound.play();
 
 						// 关闭闹钟
