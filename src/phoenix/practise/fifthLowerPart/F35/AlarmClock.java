@@ -31,12 +31,12 @@ public class AlarmClock extends Applet implements Runnable {
 		Panel panel4 = new Panel();
 
 		// 增加组件到面板上
-		tfHour = new TextField(1);
-		tfMinute = new TextField(1);
-		tfSecond = new TextField(1);
-		tfNowHour = new TextField(1);
-		tfNowMinute = new TextField(1);
-		tfNowSecond = new TextField(1);
+		tfHour = new TextField(2);
+		tfMinute = new TextField(2);
+		tfSecond = new TextField(2);
+		tfNowHour = new TextField(2);
+		tfNowMinute = new TextField(2);
+		tfNowSecond = new TextField(2);
 		btStart = new Button("开");
 		btStop = new Button("关");
 
