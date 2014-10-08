@@ -4,13 +4,13 @@ import java.math.BigInteger;
 import java.util.ArrayList;
 import java.util.List;
 
-//»¹ĞèÒªÔÙÓÅ»¯,¼ÆËã1000µÄ½×³Ë
+//è¿˜éœ€è¦å®Œå–„ï¼Œåœ¨1200ä»¥ä¸Šå­˜åœ¨é—®é¢˜
 public class Factorial10000 {
 
 	public static void main(String[] args) {
 		// method one
 		BigInteger bi = BigInteger.ONE;
-		for (int i = 2; i <= 1100; i++) {
+		for (int i = 2; i <= 5; i++) {
 			bi = bi.multiply(BigInteger.valueOf(i));
 		}
 		System.out.println("The Factorial of 10000 is : " + bi.toString());
@@ -60,14 +60,14 @@ public class Factorial10000 {
 			}
 
 			Integer maxPosition = 1;
-			// È¡µÃ×î´óµÄÎ»Êı
+			// È¡ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½
 			for (String k : rltInRows) {
 				if (Integer.valueOf(k.length()).compareTo(maxPosition) > 0) {
 					maxPosition = Integer.valueOf(k.length());
 				}
 			}
 
-			// Ê¹ÓÃ¼Ó·¨¼ÆËã×ÜºÍ
+			// ä½¿ç”¨åŠ æ³•è®¡ç®—ç»“æœ
 			String resultString = "";
 			for (String k : rltInRows) {
 				resultString = additive(resultString, k, maxPosition);
@@ -84,7 +84,7 @@ public class Factorial10000 {
 			return a + b;
 		} else {
 			StringBuilder sbRow = new StringBuilder();
-			// ¸øÊı×Ö±È½ÏĞ¡µÄÖµ²¹Î»£¬¼´Ç°Ãæ¼Ó0
+			// æŒ‰ç…§æœ€å¤§çš„æ•°å€¼ä½æ•°è¡¥ä½ï¼Œå³åœ¨æœ«å°¾åŠ 0
 			String zerosofa = "";
 			for (int j = 0; j < max - a.length(); j++) {
 				zerosofa = zerosofa + "0";
@@ -97,7 +97,7 @@ public class Factorial10000 {
 			}
 			b = b + zerosofb;
 
-			// ¿ªÊ¼¼ÆËã×ÜºÍ
+			// è®¡ç®—ä¹˜æ³•æ¯ä½ç»“æœçš„å’Œï¼Œç»„æˆæœ€ç»ˆç»“æœ
 			int rlttoup = 0;
 			for (int i = 0; i < max; i++) {
 				int rltInEC = Integer
