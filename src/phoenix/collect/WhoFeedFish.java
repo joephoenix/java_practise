@@ -37,6 +37,18 @@ public class WhoFeedFish {
 		Germay, England, Norway, Danish, Swiden
 	}
 
+	protected static void removeObject(List<Integer> iList, Integer i) {
+		int seq = 0;
+		int length = iList.size();
+		for (int j = 0; j < length; j++) {
+			if (iList.get(j).equals(i)) {
+				seq = j;
+				break;
+			}
+		}
+		iList.remove(seq);
+	}
+
 	public static void main(String[] args) {
 		WhoFeedFish wff = new WhoFeedFish();
 		Set<List<String>> colorGroup = wff.CreateColorGroup();
@@ -75,131 +87,222 @@ public class WhoFeedFish {
 				clg4.add(cl);
 			}
 		}
-		// 按照第一个条件，英国人住在红色房屋里，组成颜色和国家的组合
-		LinkedList<List<String>> clg1 = new LinkedList<List<String>>();
-		LinkedList<List<String>> cg1 = new LinkedList<List<String>>();
+		List<Integer> sequence = new ArrayList<Integer>();
+		sequence.add(0);
+		sequence.add(1);
+		sequence.add(2);
+		sequence.add(3);
+		sequence.add(4);
+		// 经过前几项的筛选，国家、颜色和饮料的候选项减少了许多，可以组合在一起筛选了
+		// 按照第1个条件，英国人住在红色房屋里，组成颜色和国家的组合
+		// 按照第5个条件筛选颜色和饮料之间的组合（绿色房屋的屋主喝咖啡）
+		// 按照第3个条件筛选国家和喝饮料的组合（丹麦人喝茶）
+		LinkedList<List<String>> clg01 = new LinkedList<List<String>>();
+		LinkedList<List<String>> cg01 = new LinkedList<List<String>>();
+		LinkedList<List<String>> dg01 = new LinkedList<List<String>>();
 		for (List<String> cl : clg4) {
 			for (List<String> c : cg9) {
-				for (int i = 0; i < 5; i++) {
-					if (c.get(i).equals("England") && cl.get(i).equals("Red")) {
-						clg1.add(cl);
-						cg1.add(c);
-					} else {
-						continue;
+				for (List<String> d : dg8) {
+					for (int i : sequence) {
+						if (d.get(i).equals("Tea") && c.get(i).equals("Danish")) {
+							List<Integer> seqa = new ArrayList<Integer>();
+							seqa.addAll(sequence);
+							removeObject(seqa, i);
+							for (int j : seqa) {
+								if (d.get(j).equals("Coffer")
+										&& cl.get(j).equals("Green")) {
+									List<Integer> seqb = new ArrayList<Integer>();
+									seqb.addAll(seqa);
+									removeObject(seqb, j);
+									for (int k : seqb) {
+										if (c.get(k).equals("England")
+												&& cl.get(k).equals("Red")) {
+											clg01.add(cl);
+											dg01.add(d);
+											cg01.add(c);
+										}
+									}
+								}
+							}
+						}
 					}
 				}
 			}
 		}
-		// 清理重复的内容
-		// 颜色
+		// 去除重复的内容
 		Set<List<String>> colorSet01 = new HashSet<List<String>>();
-		for (List<String> cls : clg1) {
-			colorSet01.add(cls);
+		for (List<String> cla : clg01) {
+			colorSet01.add(cla);
 		}
-		// 国家
 		Set<List<String>> countrySet01 = new HashSet<List<String>>();
-		for (List<String> cs : cg1) {
-			countrySet01.add(cs);
+		for (List<String> ca : cg01) {
+			countrySet01.add(ca);
 		}
-		// 按照第5个条件筛选颜色和饮料之间的组合（绿色房屋的屋主喝咖啡）
-		LinkedList<List<String>> clg5 = new LinkedList<List<String>>();
-		LinkedList<List<String>> dg5 = new LinkedList<List<String>>();
-		for (List<String> cl : colorSet01) {
-			for (List<String> d : dg8) {
-				for (int i = 0; i < 5; i++) {
-					if (d.get(i).equals("Coffer") && cl.get(i).equals("Green")) {
-						clg5.add(cl);
-						dg5.add(d);
-					} else {
-						continue;
-					}
-				}
-			}
-		}
-		// 清理重复的内容，饮料
 		Set<List<String>> drinkSet01 = new HashSet<List<String>>();
-		for (List<String> ds : dg5) {
-			drinkSet01.add(ds);
+		for (List<String> da : dg01) {
+			drinkSet01.add(da);
 		}
-		// 按照第3个条件筛选国家和喝饮料的组合（丹麦人喝茶）
-		LinkedList<List<String>> dg3 = new LinkedList<List<String>>();
-		LinkedList<List<String>> cg3 = new LinkedList<List<String>>();
-		for (List<String> c : countrySet01) {
-			for (List<String> d : drinkSet01) {
-				for (int i = 0; i < 5; i++) {
-					if (d.get(i).equals("Tea") && c.get(i).equals("Danish")) {
-						dg3.add(d);
-						cg3.add(c);
-					} else {
-						continue;
+		// ----------------------------------------------------------
+		// 7,吸Dunhill香烟的是黄色屋主
+		Set<List<String>> sg7 = new HashSet<List<String>>();
+		Set<List<String>> clg7 = new HashSet<List<String>>();
+		for (List<String> cla : colorSet01) {
+			for (int i : sequence) {
+				if (cla.get(i).equals("Yellow")) {
+					for (List<String> sa : smokeGroup) {
+						if (sa.get(i).equals("Dunhill")) {
+							sg7.add(sa);
+							clg7.add(cla);
+						}
 					}
 				}
 			}
 		}
-		// 清理重复内容，国家
-		Set<List<String>> countrySet02 = new HashSet<List<String>>();
-		for (List<String> cs : cg3) {
-			countrySet02.add(cs);
-		}
-		// 按照第7个条件筛选颜色和香烟之间的组合（黄色屋主吸Dunhill香烟）
-		LinkedList<List<String>> clg7 = new LinkedList<List<String>>();
-		LinkedList<List<String>> sg7 = new LinkedList<List<String>>();
-		for (List<String> cl : colorSet01) {
-			for (List<String> s : smokeGroup) {
-				for (int i = 0; i < 5; i++) {
-					if (s.get(i).equals("Dunhill")
-							&& cl.get(i).equals("Yellow")) {
-						clg7.add(cl);
-						sg7.add(s);
-					} else {
-						continue;
+		// 13,吸Prince香烟是德国人
+		Set<List<String>> sg13 = new HashSet<List<String>>();
+		Set<List<String>> cg13 = new HashSet<List<String>>();
+		for (List<String> ca : countrySet01) {
+			for (int i : sequence) {
+				if (ca.get(i).equals("Germay")) {
+					for (List<String> sa : sg7) {
+						if (sa.get(i).equals("Dunhill")) {
+							sg13.add(sa);
+							cg13.add(ca);
+						}
 					}
 				}
 			}
 		}
-		// 清理重复内容，香烟
-		Set<List<String>> smokeSet01 = new HashSet<List<String>>();
-		for (List<String> ss : sg7) {
-			smokeSet01.add(ss);
-		}
-		// 按照第13个条件筛选国家和抽烟之间的组合（德国人吸Prince香烟）
-		LinkedList<List<String>> cg13 = new LinkedList<List<String>>();
-		LinkedList<List<String>> sg13 = new LinkedList<List<String>>();
-		for (List<String> c : countrySet02) {
-			for (List<String> s : smokeSet01) {
-				for (int i = 0; i < 5; i++) {
-					if (s.get(i).equals("Prince") && c.get(i).equals("Germay")) {
-						cg13.add(c);
-						sg13.add(s);
-					} else {
-						continue;
+		// 12,吸BlueMaster香烟的屋主喝啤酒
+		// 15,只喝开水的人住在吸Blend香烟的人的隔壁
+		LinkedList<List<String>> dg02 = new LinkedList<List<String>>();
+		LinkedList<List<String>> sg02 = new LinkedList<List<String>>();
+		for (List<String> sa : sg13) {
+			for (List<String> da : drinkSet01) {
+				for (Integer i : sequence) {
+					if (da.get(i).equals("Water")) {
+						if (i == 0) {
+							String dd = sa.get(i + 1);
+							if (dd.equals("Blend")) {
+								List<Integer> seqa = new ArrayList<Integer>();
+								seqa.addAll(sequence);
+								removeObject(seqa, i);
+								for (int j : seqa) {
+									if (da.get(j).equals("Beer")
+											&& sa.get(j).equals("BlueMaster")) {
+										dg02.add(da);
+										sg02.add(sa);
+									}
+								}
+							}
+						} else if (i == 4) {
+							String dd = sa.get(i - 1);
+							if (dd.equals("Blend")) {
+								List<Integer> seqa = new ArrayList<Integer>();
+								seqa.addAll(sequence);
+								removeObject(seqa, i);
+								for (int j : seqa) {
+									if (da.get(j).equals("Beer")
+											&& sa.get(j).equals("BlueMaster")) {
+										dg02.add(da);
+										sg02.add(sa);
+									}
+								}
+							}
+						} else {
+							String dd1 = sa.get(i - 1);
+							String dd2 = sa.get(i + 1);
+							if (dd1.equals("Blend") || dd2.equals("Blend")) {
+								List<Integer> seqa = new ArrayList<Integer>();
+								seqa.addAll(sequence);
+								removeObject(seqa, i);
+								for (int j : seqa) {
+									if (da.get(j).equals("Beer")
+											&& sa.get(j).equals("BlueMaster")) {
+										dg02.add(da);
+										sg02.add(sa);
+									}
+								}
+							}
+						}
 					}
 				}
 			}
 		}
-		// 清理重复内容，香烟
+		Set<List<String>> drinkSet02 = new HashSet<List<String>>();
+		for (List<String> da : dg02) {
+			drinkSet02.add(da);
+		}
 		Set<List<String>> smokeSet02 = new HashSet<List<String>>();
-		for (List<String> ss : sg13) {
-			smokeSet02.add(ss);
+		for (List<String> sa : sg02) {
+			smokeSet02.add(sa);
 		}
-		// 按照第6个条件筛选香烟和宠物之间的组合（吸PallMall香烟的屋主养鸟）
-		System.out.println("---" + smokeSet01.size() + "---");
-		for (List<String> cs2 : smokeSet01) {
-			for (String s : cs2) {
-				System.out.print("(" + s + ") ");
+		Set<List<String>> colorSet02 = new HashSet<List<String>>();
+		for (List<String> cla : clg7) {
+			colorSet02.add(cla);
+		}
+		Set<List<String>> countrySet02 = new HashSet<List<String>>();
+		for (List<String> ca : cg13) {
+			countrySet02.add(ca);
+		}
+		// 2,瑞典人养了一只狗,
+		// 6,吸PallMall香烟的屋主养鸟
+		// 所以瑞典人不吸PallMall香烟, 德国人吸Prince香烟
+		LinkedList<List<String>> cg03 = new LinkedList<List<String>>();
+		LinkedList<List<String>> sg03 = new LinkedList<List<String>>();
+		for (List<String> ca : countrySet02) {
+			for (List<String> sa : smokeSet02) {
+				for (Integer i : sequence) {
+					if (ca.get(i).equals("Swiden")
+							&& !sa.get(i).equals("PallMall")) {
+						List<Integer> seqa = new ArrayList<Integer>();
+						seqa.addAll(sequence);
+						removeObject(seqa, i);
+						for (int j : seqa) {
+							if (ca.get(j).equals("Germay")
+									&& sa.get(j).equals("Prince")) {
+								cg03.add(ca);
+								sg03.add(sa);
+							}
+						}
+					}
+				}
 			}
-			System.out.println();
 		}
-		System.out.println(cg13.size() + "---" + sg13.size());
+		// 去除重复,香烟和国家
+		Set<List<String>> smokeSet03 = new HashSet<List<String>>();
+		for (List<String> sa : sg03) {
+			smokeSet03.add(sa);
+		}
+		Set<List<String>> countrySet03 = new HashSet<List<String>>();
+		for (List<String> ca : cg03) {
+			countrySet03.add(ca);
+		}
+		// 11,养马的屋主在吸Dunhill香烟的人家的隔壁
+		// 10,养猫人家的在吸Blend香烟的人家的隔壁
+		// 黄色屋主吸Dunhill香烟
+		// 只喝开水的人住在吸Blend香烟的人的隔壁
+		// 瑞典人不吸PallMall香烟, 德国人吸Prince香烟
+		// 所以黄色屋主不养马， 德国人不养狗
 
-		int n = sg13.size();
+		// ---------------------------------------------------------
+		System.out.println("---国家:" + countrySet03.size() + "---饮料:"
+				+ drinkSet02.size() + "---颜色:" + colorSet02.size() + "---香烟"
+				+ smokeSet03.size());
+
+		int n = colorSet02.size();
 		for (int j = 0; j < n; j++) {
-			List<String> ds = (List<String>) cg13.toArray()[j];
-			List<String> cs = (List<String>) sg13.toArray()[j];
-			for (String c : cs) {
-				System.out.print("[" + c + "]" + " ");
-			}
-			System.out.print("\n\r");
+			List<String> ds = (List<String>) colorSet02.toArray()[j];
+			//List<String> cs = (List<String>) sg03.toArray()[j];
+			// List<String> cls = (List<String>) clg01.toArray()[j];
+			// for (String cl : cls) {
+			// System.out.print("[" + cl + "]" + " ");
+			// }
+			// System.out.print("\n\r");
+			//for (String c : cs) {
+			//	System.out.print("[" + c + "]" + " ");
+			//}
+			//System.out.print("\n\r");
 			for (String d : ds) {
 				System.out.print("[" + d + "]" + " ");
 			}
