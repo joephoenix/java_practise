@@ -293,16 +293,16 @@ public class WhoFeedFish {
 		int n = colorSet02.size();
 		for (int j = 0; j < n; j++) {
 			List<String> ds = (List<String>) colorSet02.toArray()[j];
-			//List<String> cs = (List<String>) sg03.toArray()[j];
+			// List<String> cs = (List<String>) sg03.toArray()[j];
 			// List<String> cls = (List<String>) clg01.toArray()[j];
 			// for (String cl : cls) {
 			// System.out.print("[" + cl + "]" + " ");
 			// }
 			// System.out.print("\n\r");
-			//for (String c : cs) {
-			//	System.out.print("[" + c + "]" + " ");
-			//}
-			//System.out.print("\n\r");
+			// for (String c : cs) {
+			// System.out.print("[" + c + "]" + " ");
+			// }
+			// System.out.print("\n\r");
 			for (String d : ds) {
 				System.out.print("[" + d + "]" + " ");
 			}
