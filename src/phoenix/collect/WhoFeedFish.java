@@ -48,6 +48,11 @@ public class WhoFeedFish {
 		List<List<String>> ptrlt = wff.comboItems(pettes);
 
 		/*------------------------开始混合判断---------------------------*/
+		// 第一部分，排列一个国家的组合列，不重合，然后判断宠物、红色、饮料，香烟是否符合要求，需要同时生效
+		// 第1，2，3，13个判断
+		// 第二部分，对上面的结果再次筛选，如第5，6，7，12的判断；
+		// 第三部分，在对结果进行筛选判断，使用第10，11，15的判断
+
 		// 第一个判断
 		Map<String, List<List<String>>> after1 = wff.firstCondition(after9,
 				after4);
@@ -75,26 +80,25 @@ public class WhoFeedFish {
 		// wff.printArray(after13.get("contry"));
 		// wff.printArray(after13.get("smokes"));
 		Map<String, List<List<String>>> after12 = wff.twelfthCondition(
-				after7.get("smokes"), after5.get("drinks"));
+				after13.get("smokes"), after5.get("drinks"));
 		// wff.printArray(after12.get("smokes"));
 		// wff.printArray(after12.get("drinks"));
 		Map<String, List<List<String>>> after15 = wff.fifteenthCondition(
 				after12.get("smokes"), after12.get("drinks"));
-		wff.printArray(after15.get("smokes"));
-		wff.printArray(after15.get("drinks"));
-
-		// Map<String, List<List<String>>> after6 = wff.sixthCondition(
-		// after13.get("smokes"), after2.get("pettes"));
+		// wff.printArray(after15.get("smokes"));
+		// wff.printArray(after15.get("drinks"));
+		Map<String, List<List<String>>> after6 = wff.sixthCondition(
+				after15.get("smokes"), after2.get("pettes"));
 		// wff.printArray(after6.get("smokes"));
 		// wff.printArray(after6.get("pettes"));
-		// Map<String, List<List<String>>> after10 = wff.tenthCondition(
-		// after6.get("smokes"), after6.get("pettes"));
+		Map<String, List<List<String>>> after10 = wff.tenthCondition(
+				after6.get("smokes"), after6.get("pettes"));
 		// wff.printArray(after10.get("smokes"));
 		// wff.printArray(after10.get("pettes"));
-		// Map<String, List<List<String>>> after11 = wff.eleventhCondition(
-		// after6.get("smokes"), after6.get("pettes"));
-		// wff.printArray(after11.get("smokes"));
-		// wff.printArray(after11.get("pettes"));
+		Map<String, List<List<String>>> after11 = wff.eleventhCondition(
+				after10.get("smokes"), after10.get("pettes"));
+		wff.printArray(after11.get("smokes"));
+		wff.printArray(after11.get("pettes"));
 	}
 
 	/**
