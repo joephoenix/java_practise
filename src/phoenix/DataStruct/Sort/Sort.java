@@ -27,6 +27,18 @@ public class Sort<T extends Comparable<T>> {
 
 	}
 
+	public void selectSort(T[] array, int i, int j) {
+		for (int x = i; x < j; x++) {
+			int min = x;
+			for (int y = x + 1; y < j; y++) {
+				if (array[min].compareTo(array[y]) > 0) {
+					min = y;
+				}
+			}
+			swap(array, x, min);
+		}
+	}
+
 	/**
 	 * 插入排序也是一种比较直观的排序方式。可以以我们平常打扑克牌为例来说明，
 	 * 假设我们那在手上的牌都是排好序的，那么插入排序可以理解为我们每一次将摸到的牌 ，和手中的牌从左到右依次进行对比，如果找到合适的位置则直接插入。
@@ -41,6 +53,18 @@ public class Sort<T extends Comparable<T>> {
 	public void insertSort(T[] array) {
 		int n = array.length;
 		for (int i = 1; i < n; i++) {
+			for (int j = i; j > 0; j--) {
+				if (array[j].compareTo(array[j - 1]) < 0) {
+					swap(array, j, j - 1);
+				} else {
+					break;
+				}
+			}
+		}
+	}
+
+	public void insertSort(T[] array, int x, int y) {
+		for (int i = x; i < y; i++) {
 			for (int j = i; j > 0; j--) {
 				if (array[j].compareTo(array[j - 1]) < 0) {
 					swap(array, j, j - 1);
