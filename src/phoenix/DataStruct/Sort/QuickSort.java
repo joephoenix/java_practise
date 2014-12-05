@@ -243,6 +243,13 @@ public class QuickSort<T extends Comparable<T>> {
 		return j;
 	}
 
+	/**
+	 * 交换数组中两个数字的位置
+	 * 
+	 * @param array
+	 * @param i
+	 * @param min
+	 */
 	private void swap(T[] array, int i, int min) {
 		T temp = array[i];
 		array[i] = array[min];
