@@ -137,4 +137,11 @@ public class Sort<T extends Comparable<T>> {
 		array[i] = array[min];
 		array[min] = temp;
 	}
+
+	public void printArray(T[] array) {
+		for (T i : array) {
+			System.out.print(" " + i + " ");
+		}
+		System.out.println();
+	}
 }

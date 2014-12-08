@@ -19,7 +19,7 @@ package phoenix.DataStruct.Sort;
  *
  * @param <T>
  */
-public class QuickSort<T extends Comparable<T>> {
+public class QuickSort<T extends Comparable<T>> extends Sort<T> {
 
 	private final static int CUTOFF = 10;
 
@@ -57,8 +57,7 @@ public class QuickSort<T extends Comparable<T>> {
 		}
 		// 对于小序列，直接采用插入排序替代
 		if (hi - lo <= CUTOFF - 1) {
-			Sort<T> is = new Sort<T>();
-			is.insertSort(array, lo, hi);
+			insertSort(array, lo, hi);
 			return;
 		}
 		// Bentley-McIlroy 3-way partitioning
@@ -123,8 +122,7 @@ public class QuickSort<T extends Comparable<T>> {
 		}
 		// 对于小序列，直接采用插入排序替代
 		if (hi - lo <= CUTOFF - 1) {
-			Sort<T> is = new Sort<T>();
-			is.insertSort(array, lo, hi);
+			insertSort(array, lo, hi);
 			return;
 		}
 		// 三分区排序
@@ -160,8 +158,7 @@ public class QuickSort<T extends Comparable<T>> {
 		}
 		// 对于小序列，直接采用插入排序替代
 		if (hi - lo <= CUTOFF - 1) {
-			Sort<T> is = new Sort<T>();
-			is.insertSort(array, lo, hi);
+			insertSort(array, lo, hi);
 			return;
 		}
 		// 划分，划分完成之后，分为左右序列，

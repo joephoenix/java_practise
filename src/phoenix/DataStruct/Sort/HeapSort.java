@@ -1,17 +1,26 @@
 package phoenix.DataStruct.Sort;
 
-public class HeapSort<T extends Comparable<T>> {
+public class HeapSort<T extends Comparable<T>> extends Sort<T> {
 
 	private T[] pq;
 	private int N;
 
-	public void createHeap() {
+	@SuppressWarnings("unchecked")
+	public void Sort(T[] array) {
+		N = array.length;
+		pq = (T[]) new Comparable[N + 1];
+		for (int i = 1; i < N + 1; i++) {
+			pq[i] = array[i - 1];
+		}
 		for (int k = N / 2; k >= 1; k--) {
 			sink(pq, k, N);
 		}
 		while (N > 1) {
 			Swap(pq, 1, N--);
 			sink(pq, 1, N);
+		}
+		for (int j = 0; j < pq.length - 1; j++) {
+			array[j] = pq[j + 1];
 		}
 	}
 

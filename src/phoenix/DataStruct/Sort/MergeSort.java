@@ -25,7 +25,7 @@ package phoenix.DataStruct.Sort;
  *
  * @param <T>
  */
-public class MergeSort<T extends Comparable<T>> {
+public class MergeSort<T extends Comparable<T>> extends Sort<T> {
 
 	private T[] aux;
 	private final int CUTOFF = 7;// 采用插入排序的阀值
@@ -60,8 +60,7 @@ public class MergeSort<T extends Comparable<T>> {
 			return;
 		}
 		if (hi <= lo + CUTOFF - 1) {
-			Sort<T> sort = new Sort<T>();
-			sort.selectSort(array, lo, hi);
+			selectSort(array, lo, hi);
 		}
 		// 平分数组
 		int mid = lo + (hi - lo) / 2;
