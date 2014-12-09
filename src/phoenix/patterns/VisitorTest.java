@@ -1,8 +1,8 @@
 package phoenix.patterns;
 
-import phoenix.patterns.visitor.ConcreteVisitor;
-import phoenix.patterns.visitor.Element;
-import phoenix.patterns.visitor.ObjectStructure;
+import phoenix.patterns.p22Visitor.ConcreteVisitor;
+import phoenix.patterns.p22Visitor.Element;
+import phoenix.patterns.p22Visitor.ObjectStructure;
 
 public abstract class VisitorTest {
 

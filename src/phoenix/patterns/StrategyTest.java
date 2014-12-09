@@ -1,8 +1,8 @@
 package phoenix.patterns;
 
-import phoenix.patterns.strategy.EnterpriseTaxStrategy;
-import phoenix.patterns.strategy.InterestOperation;
-import phoenix.patterns.strategy.PersonalTaxStrategy;
+import phoenix.patterns.p20Strategy.EnterpriseTaxStrategy;
+import phoenix.patterns.p20Strategy.InterestOperation;
+import phoenix.patterns.p20Strategy.PersonalTaxStrategy;
 
 public class StrategyTest {
 

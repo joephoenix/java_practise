@@ -1,6 +1,6 @@
 package phoenix.patterns;
 
-import phoenix.patterns.ResponsibilityChain.RespnosiblityChain;
+import phoenix.patterns.p21ResponsibilityChain.RespnosiblityChain;
 
 public class ChainTest {
 
