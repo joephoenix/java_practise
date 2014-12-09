@@ -15,7 +15,7 @@ public class CareTacker {
 		this.contactMemento = contactMemento;
 	}
 
-	public static void main(String[] args) {
+	public void tackerInit() {
 		List<ContactPerson> persons = new ArrayList<ContactPerson>();
 		ContactPerson cp1 = new ContactPerson();
 		cp1.setName("Learing Hard");
@@ -36,7 +36,6 @@ public class CareTacker {
 		// 创建备忘录并保存对象
 		CareTacker ct = new CareTacker();
 		ct.setContactMemento(mo.CreateMemento());
-
 		// 更改发起人联系人列表
 		System.out.println("------------移除一个联系人----------");
 		mo.ContactPersons.remove(2);

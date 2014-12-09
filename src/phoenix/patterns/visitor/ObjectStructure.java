@@ -22,12 +22,4 @@ public class ObjectStructure {
 			}
 		}
 	}
-
-	public static void main(String[] args) {
-		ObjectStructure os = new ObjectStructure();
-		for (Element e : os.getElements()) {
-			e.Accept(new ConcreteVisitor());
-		}
-	}
-
 }

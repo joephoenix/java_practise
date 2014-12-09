@@ -2,7 +2,7 @@ package phoenix.patterns.ResponsibilityChain;
 
 public class RespnosiblityChain {
 
-	public static void main(String[] args) {
+	public void chainProccess() {
 		PurchaseRequest telephone = new PurchaseRequest(4000, "Telephone");
 		PurchaseRequest softwares = new PurchaseRequest(10000, "Softwares");
 		PurchaseRequest computers = new PurchaseRequest(40000, "Computers");
