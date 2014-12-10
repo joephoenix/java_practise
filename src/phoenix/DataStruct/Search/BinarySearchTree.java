@@ -1,7 +1,6 @@
 package phoenix.DataStruct.Search;
 
-public class BinarySearchTree<T extends Comparable<T>> {
-
+public class BinarySearchTree<T1 extends Comparable<T1>, T2 extends Comparable<T2>> {
 	// 声明根节点
 	private Node root;
 
@@ -9,22 +8,22 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	class Node {
 		Node left;
 		Node right;
-		public T key;
-		public T value;
+		public T1 key;
+		public T2 value;
 
-		public T getKey() {
+		public T1 getKey() {
 			return key;
 		}
 
-		public void setKey(T key) {
+		public void setKey(T1 key) {
 			this.key = key;
 		}
 
-		public T getValue() {
+		public T2 getValue() {
 			return value;
 		}
 
-		public void setValue(T value) {
+		public void setValue(T2 value) {
 			this.value = value;
 		}
 
@@ -44,15 +43,15 @@ public class BinarySearchTree<T extends Comparable<T>> {
 			this.right = right;
 		}
 
-		public Node(T key, T value) {
+		public Node(T1 key, T2 value) {
 			this.key = key;
 			this.value = value;
 		}
 	}
 
 	// 查找的递归实现
-	public T getValue(T key) {
-		T result = null;
+	public T2 getValue(T1 key) {
+		T2 result = null;
 
 		Node node = root;
 		while (node != null) {
@@ -69,11 +68,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 
 	// 查找的迭代实现
-	public T get(T key) {
+	public T2 get(T1 key) {
 		return getValue(root, key);
 	}
 
-	public T getValue(Node root, T key) {
+	public T2 getValue(Node root, T1 key) {
 		if (root == null) {
 			return null;
 		}
@@ -88,11 +87,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 
 	// 插入，使用迭代的方式
-	public void put(T key, T value) {
+	public void put(T1 key, T2 value) {
 		root = put(root, key, value);
 	}
 
-	private Node put(Node x, T key, T value) {
+	private Node put(Node x, T1 key, T2 value) {
 		// 如果节点为空，则创建新的节点，并返回
 		// 否则比较根据大小判断是左节点还是右节点，然后继续查找左子树还是右子树
 		if (x == null) {
@@ -110,8 +109,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 
 	// 取最大节点
-	public T getMax() {
-		T maxItem = null;
+	public T2 getMax() {
+		T2 maxItem = null;
 		Node s = root;
 		while (s.right != null) {
 			s = s.right;
@@ -121,8 +120,8 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 
 	// 取最小的节点
-	public T getMin() {
-		T minItem = null;
+	public T2 getMin() {
+		T2 minItem = null;
 		Node s = root;
 		while (s.left != null) {
 			s = s.left;
@@ -132,7 +131,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 
 	// 查找小于等于的节点
-	public T Floor(T key) {
+	public T1 Floor(T1 key) {
 		Node x = Floor(root, key);
 		if (x != null) {
 			return x.key;
@@ -141,7 +140,7 @@ public class BinarySearchTree<T extends Comparable<T>> {
 		}
 	}
 
-	private Node Floor(Node x, T key) {
+	private Node Floor(Node x, T1 key) {
 		if (x == null) {
 			return null;
 		}
@@ -188,11 +187,11 @@ public class BinarySearchTree<T extends Comparable<T>> {
 	}
 
 	// 删除指定节点
-	public void delete(T key) {
+	public void delete(T1 key) {
 		root = delete(root, key);
 	}
 
-	private Node delete(Node d, T key) {
+	private Node delete(Node d, T1 key) {
 		int cmp = key.compareTo(d.key);
 		if (cmp > 0) {
 			d.right = delete(d.right, key);
