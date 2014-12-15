@@ -1,4 +1,4 @@
-package phoenix.Algorithm.math;
+package phoenix.mathmastic;
 
 public class PrimeCalculate {
 

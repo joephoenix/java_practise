@@ -1,5 +1,6 @@
 package phoenix.DataStruct;
 
+import phoenix.DataStruct.Search.BTree;
 import phoenix.DataStruct.Search.BinarySearchTree;
 import phoenix.DataStruct.Search.RedBlackTree;
 
@@ -7,7 +8,8 @@ public class SearchTest {
 	public static void main(String[] args) {
 		SearchTest st = new SearchTest();
 		// st.bstTest();
-		st.rbtTest();
+		// st.rbtTest();
+		st.BTreeTest();
 	}
 
 	// 二叉查找树的测试
@@ -27,8 +29,8 @@ public class SearchTest {
 	// 红黑树的测试
 	public void rbtTest() {
 		RedBlackTree<Integer, String> rbt = new RedBlackTree<Integer, String>();
-		Integer[] keys = { 7, 44, 16, 88, 55, 4, 16, 27, 39, 2, 40, 33, 22,
-				56, 14 };
+		Integer[] keys = { 7, 44, 16, 88, 55, 4, 16, 27, 39, 2, 40, 33, 22, 56,
+				14 };
 		String[] vals = { "blue", "jan", "july", "sixtytwo", "sample", "proof",
 				"fool", "sep", "cancer", "slimy", "fliter", "solar", "scorpio",
 				"antares", "december" };
@@ -43,4 +45,19 @@ public class SearchTest {
 		System.out.println(rbt.getMax().getKey() + ":"
 				+ rbt.getMax().getValue() + ":" + rbt.getMax().number);
 	}
+
+	public void BTreeTest() {
+		BTree<Character> tree = new BTree<Character>(3);
+		System.out.println(tree);
+		Character[] cl = { 'D', 'E', 'F', 'A', 'C', 'B', 'Z', 'H', 'I', 'J' };
+
+		// 插入列表到btree上
+		for (int i = 0; i < cl.length; i++) {
+			tree.insertElement(cl[i]);
+			System.out.println("After insert the: " + cl[i]);
+			System.out.println(tree);
+		}
+
+	}
+
 }
