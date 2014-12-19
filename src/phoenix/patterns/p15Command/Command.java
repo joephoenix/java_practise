@@ -17,10 +17,16 @@ package phoenix.patterns.p15Command;
  *
  */
 public abstract class Command {
-	protected Receiver _receiver;
 
-	public Command(Receiver receiver) {
-		this._receiver = receiver;
+	protected Runner _runner;
+	protected Swimer _swimer;
+
+	public Command(Runner runner) {
+		this._runner = runner;
+	}
+
+	public Command(Swimer swimer) {
+		this._swimer = swimer;
 	}
 
 	public abstract void Action();

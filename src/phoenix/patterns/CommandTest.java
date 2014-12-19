@@ -1,18 +1,24 @@
 package phoenix.patterns;
 
 import phoenix.patterns.p15Command.Command;
-import phoenix.patterns.p15Command.ConcreteCommand;
+import phoenix.patterns.p15Command.RunCommand;
 import phoenix.patterns.p15Command.Invoke;
-import phoenix.patterns.p15Command.Receiver;
+import phoenix.patterns.p15Command.Runner;
+import phoenix.patterns.p15Command.SwimCommand;
+import phoenix.patterns.p15Command.Swimer;
 
 public class CommandTest {
 
 	public static void main(String[] args) {
-		Receiver r = new Receiver();
-		Command c = new ConcreteCommand(r);
-		Invoke i = new Invoke(c);
+		Runner r = new Runner();
+		Swimer w = new Swimer();
+		Command cr = new RunCommand(r);
+		Command cw = new SwimCommand(w);
+		Invoke runIv = new Invoke(cr);
+		Invoke swimIv = new Invoke(cw);
 
-		i.ExecuteCommand();
+		runIv.ExecuteCommand();
+		swimIv.ExecuteCommand();
 	}
 
 }
