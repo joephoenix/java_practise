@@ -1,29 +1,32 @@
 package phoenix.DataStruct.Stack;
 
-public class Stack<T> {
+import java.util.Iterator;
+import java.util.NoSuchElementException;
 
-	private class Node {
-		private T Item;
-		private Node next;
+public class Stack<T> implements Iterable<T> {
+
+	private class Node<T> {
+		private T item;
+		private Node<T> next;
 
 		public T getItem() {
-			return Item;
+			return item;
 		}
 
 		public void setItem(T item) {
-			Item = item;
+			this.item = item;
 		}
 
-		public Node getNext() {
+		public Node<T> getNext() {
 			return next;
 		}
 
-		public void setNext(Node next) {
+		public void setNext(Node<T> next) {
 			this.next = next;
 		}
 	}
 
-	private Node first = null;
+	private Node<T> first = null;
 	private int number = 0;
 
 	/**
@@ -32,8 +35,8 @@ public class Stack<T> {
 	 * @param value
 	 */
 	public void push(T value) {
-		Node oldFirst = first;
-		first = new Node();
+		Node<T> oldFirst = first;
+		first = new Node<T>();
 		first.setItem(value);
 		first.setNext(oldFirst);
 		number++;
@@ -51,26 +54,33 @@ public class Stack<T> {
 		return item;
 	}
 
-	public static void main(String[] args) {
-		Stack<String> st = new Stack<String>();
-		st.push("Jan");
-		st.push("Feb");
-		st.push("Mar");
-		st.push("Apr");
-		st.push("May");
-		st.push("Jul");
-		st.push("Jun");
-		st.push("Aug");
-		st.push("Sep");
-		st.push("Oct");
-		st.push("Nov");
-		st.push("Dec");
-		System.out.println("the number is " + st.number);
-		Stack<String>.Node ft = st.first;
-		while (ft != null) {
-			System.out.println("value is " + ft.getItem());
-			ft = ft.getNext();
+	@Override
+	public Iterator<T> iterator() {
+		return new ListIterator<T>(first);
+	}
+
+	private class ListIterator<T> implements Iterator<T> {
+		private Node<T> current;
+
+		public ListIterator(Node<T> first) {
+			current = first;
 		}
-		System.out.println(st.pop() + ", the number is " + st.number);
+
+		public boolean hasNext() {
+			return current != null;
+		}
+
+		public void remove() {
+			throw new UnsupportedOperationException();
+		}
+
+		public T next() {
+			if (!hasNext()) {
+				throw new NoSuchElementException();
+			}
+			T t = current.item;
+			current = current.next;
+			return t;
+		}
 	}
 }
