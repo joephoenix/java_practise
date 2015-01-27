@@ -1,9 +1,9 @@
 package phoenix.patterns;
 
-import phoenix.patterns.p09Bridge.ChangHong;
-import phoenix.patterns.p09Bridge.ConcreteRemote;
-import phoenix.patterns.p09Bridge.RemoteControl;
-import phoenix.patterns.p09Bridge.Samsung;
+import phoenix.patterns.p08Bridge.ChangHong;
+import phoenix.patterns.p08Bridge.ConcreteRemote;
+import phoenix.patterns.p08Bridge.RemoteControl;
+import phoenix.patterns.p08Bridge.Samsung;
 
 public class BridgeTest {
 

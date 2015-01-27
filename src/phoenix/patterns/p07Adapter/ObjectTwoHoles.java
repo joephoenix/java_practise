@@ -1,4 +1,4 @@
-package phoenix.patterns.p08Adapter;
+package phoenix.patterns.p07Adapter;
 
 public class ObjectTwoHoles {
 	public void SpecificRequest() {

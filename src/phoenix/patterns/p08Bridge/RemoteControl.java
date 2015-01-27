@@ -1,4 +1,4 @@
-package phoenix.patterns.p09Bridge;
+package phoenix.patterns.p08Bridge;
 
 public class RemoteControl {
 

@@ -1,9 +1,9 @@
 package phoenix.patterns;
 
-import phoenix.patterns.p08Adapter.IThreeHoles;
-import phoenix.patterns.p08Adapter.ClassPowerAdapter;
-import phoenix.patterns.p08Adapter.ObjectPowerAdapter;
-import phoenix.patterns.p08Adapter.ObjectThreeHoles;
+import phoenix.patterns.p07Adapter.ClassPowerAdapter;
+import phoenix.patterns.p07Adapter.IThreeHoles;
+import phoenix.patterns.p07Adapter.ObjectPowerAdapter;
+import phoenix.patterns.p07Adapter.ObjectThreeHoles;
 
 public class AdapterPatternTest {
 
